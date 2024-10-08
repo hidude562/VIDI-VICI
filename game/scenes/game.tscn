@@ -1,0 +1,137 @@
+[gd_scene load_steps=4 format=3 uid="uid://3y2e77yuc45h"]
+
+[ext_resource type="PackedScene" uid="uid://dw2cwqb50sr7n" path="res://scenes/Europe map.blend" id="1_7ddp7"]
+[ext_resource type="Script" path="res://scenes/camera_3d.gd" id="1_y4luw"]
+[ext_resource type="Script" path="res://scripts/ProvincesManager.gd" id="2_yt8sp"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.1621, 2.45604)
+fov = 45.7
+script = ExtResource("1_y4luw")
+
+[node name="Europe map" parent="." instance=ExtResource("1_7ddp7")]
+script = ExtResource("2_yt8sp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
+mouse_filter = 1
+
+[node name="Top display" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 28.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/Top display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[node name="Label" type="Label" parent="Control/Top display/ColorRect"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 23.0
+text = "dfsdfs"
+
+[node name="Province display" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -383.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control/Province display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Province display/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+
+[node name="Name" type="ColorRect" parent="Control/Province display/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+color = Color(0.188905, 0.0310809, 0.0583633, 1)
+
+[node name="Name" type="Label" parent="Control/Province display/ColorRect/VBoxContainer/Name"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "dfsdfs"
+horizontal_alignment = 1
+
+[node name="Population" type="ColorRect" parent="Control/Province display/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+color = Color(0.188905, 0.0310809, 0.0583633, 1)
+
+[node name="Name" type="Label" parent="Control/Province display/ColorRect/VBoxContainer/Population"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -16.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Population: 4000"
+
+[node name="Population2" type="ColorRect" parent="Control/Province display/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.188905, 0.0310809, 0.0583633, 1)
+
+[node name="Name" type="Label" parent="Control/Province display/ColorRect/VBoxContainer/Population2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -16.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Population: 4000"

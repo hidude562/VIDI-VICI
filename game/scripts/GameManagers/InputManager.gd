@@ -20,3 +20,5 @@ func _input(event: InputEvent) -> void:
 		TimeManager.timer.wait_time = 0.4
 	if Input.is_action_just_pressed("speedControl5"):
 		TimeManager.timer.wait_time = 0.2
+	if Input.is_action_just_pressed("debugSuperSpeed"):
+		TimeManager.timer.wait_time = 0.000001

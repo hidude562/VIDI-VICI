@@ -1,7 +1,7 @@
 extends Node
 
 var year = 1750
-var month = 1
+var month = 11
 var day = 1
 
 var paused = true
@@ -26,7 +26,11 @@ func dateChangeThing():
 	if day < daysInMonths[month]:
 		day += 1
 	else:
-		month += 1
+		if month != 12:
+			month += 1
+		else:
+			month = 1
+			year += 1
 		day = 1	
 	
 func _on_timer_timeout():

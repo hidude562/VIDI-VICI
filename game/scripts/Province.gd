@@ -8,7 +8,6 @@ var isBeingDisplayed = false;
 var neighbors = []
 
 func addNeighbor(neighbor: Node):
-	print("Neighbor ", str(neighbor.name))
 	neighbors.append(neighbor)
 
 func getNeighbors():
@@ -66,6 +65,12 @@ func setNation(_nation: Globals.Nation):
 	var material := get_mesh().surface_get_material(0).duplicate()
 	material.albedo_color = _nation.color
 	get_mesh().surface_set_material(0, material)
+
+func isClaimed():
+	return nation != null
+
+func isClaimable():
+	return not isClaimed() && not isWater();
 
 func getNation():
 	return nation

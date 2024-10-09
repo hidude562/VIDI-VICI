@@ -1,6 +1,8 @@
 extends Node
 
 var nations = []
+var provinces = []
+@onready var map = get_node("Europe map/")
 
 func claimNeighbors(nation, provinces, num: int):
 	var claimed = 0
@@ -16,8 +18,8 @@ func claimNeighbors(nation, provinces, num: int):
 	return claimed
 
 func _ready():
-	for i in range(75):
-		var newNation = Globals.Nation.new()
+	for i in range(50):
+		var newNation = Nation.new()
 		var centerProvince = getRandomUnclaimedProvince()
 		newNation.claimProvince(centerProvince)
 		nations.append(newNation)
@@ -28,10 +30,10 @@ func _process(delta: float) -> void:
 	if frame % 100 == 0:
 		for nation in nations:
 			claimNeighbors(nation, nation.getProvinces(), 1)
+			nation.putLabel()
 	frame+=1
 
 func getRandomProvince():
-	var map = get_node("Europe map/")
 	return map.get_child(randi_range(1, map.get_child_count()-1))
 
 func getRandomLandProvince():
@@ -40,8 +42,24 @@ func getRandomLandProvince():
 		randomProvince = getRandomProvince()
 	return randomProvince
 
+func getAllProvinces():
+	if provinces == []:
+		provinces = []
+		for i in map.get_children():
+			if(i is MeshInstance3D):
+				provinces.append(i)
+		return provinces
+	else:
+		return provinces
+
 func getRandomUnclaimedProvince():
 	var randomProvince = getRandomLandProvince()
 	while randomProvince.getNation() != null:
 		randomProvince = getRandomLandProvince()
 	return randomProvince
+
+func nextDay():
+	print("Next day")
+	var provinces = getAllProvinces()
+	for i in provinces:
+		i.nextDay()

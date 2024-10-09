@@ -1,6 +1,6 @@
 extends MeshInstance3D
 
-@export var population = 4000
+@export var population = randi_range(3000,5000)
 @export var nation = null
 @onready var game = get_node("/root/Europe map")
 
@@ -20,7 +20,15 @@ func getGDP():
 	return population * 1000
 
 func nextDay():
-	population+=1
+	population = round(population * 1.001)
+	for neighbor in neighbors:
+		if isClaimed:
+			var gdpRatio = getGDP() / neighbor.getGDP()
+			var immigration = 0
+			population += immigration
+			neighbor.population -= immigration
+	if isBeingDisplayed:
+		updateProvinceDisplay()
 
 func number_format(value: float) -> String:
 	var abs_value = abs(value)
@@ -60,7 +68,7 @@ func isWater():
 		return true
 	return false
 
-func setNation(_nation: Globals.Nation):
+func setNation(_nation: Nation):
 	nation = _nation
 	var material := get_mesh().surface_get_material(0).duplicate()
 	material.albedo_color = _nation.color

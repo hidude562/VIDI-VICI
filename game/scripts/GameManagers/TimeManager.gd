@@ -10,7 +10,7 @@ var timer = Timer.new()
 var months = ["Random obligatory empty/pointless string Because I don't want to always do month - 1", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 var daysInMonths = [300, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
 func getYear():
 	return str(year) + " AD"
@@ -53,6 +53,9 @@ func dateChangeThing():
 			month = 1
 			year += 1
 		day = 1	
+	var game = get_node_or_null("/root/Game")
+	if(game != null):
+		game.nextDay()
 	
 func _on_timer_timeout():
 	#leap years

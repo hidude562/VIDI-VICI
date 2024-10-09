@@ -1,8 +1,8 @@
 extends Node
 
 var year = 1750
-var month = 2
-var day = 25
+var month = 1
+var day = 1
 
 var paused = true
 var timer = Timer.new()

@@ -11,6 +11,9 @@ func addNeighbor(neighbor: Node):
 	print("Neighbor ", str(neighbor.name))
 	neighbors.append(neighbor)
 
+func getNeighbors():
+	return neighbors
+
 func getScience():
 	return population / 10.0
 

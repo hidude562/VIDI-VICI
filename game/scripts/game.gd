@@ -2,8 +2,12 @@ extends Node
 
 var nations = []
 
+func claimNeighbors(province: MeshInstance3D, num: int):
+	var neighbors = province.getNeighbors()
+	
+
 func _ready():
-	for i in range(130):
+	for i in range(5):
 		var newNation = Globals.Nation.new()
 		newNation.claimProvince(getRandomUnclaimedProvince())
 		nations.append(newNation)

@@ -7,6 +7,7 @@ var isHighlighted = false
 
 func highlight():
 	if(not isHighlighted):
+		get_parent().showInformation()
 		var parentMesh = get_parent().get_mesh()
 		originalMaterial = parentMesh.surface_get_material(0)
 		parentMesh.surface_set_material(0, highlightMaterial)
@@ -14,6 +15,7 @@ func highlight():
 
 func unhighlight():
 	if(isHighlighted):
+		get_parent().hideInformation()
 		var parentMesh = get_parent().get_mesh()
 		if originalMaterial:
 			parentMesh.surface_set_material(0, originalMaterial)

@@ -1,8 +1,8 @@
 extends Node
 
 var year = 1750
-var month = 1
-var day = 1
+var month = 2
+var day = 25
 
 var paused = true
 var timer = Timer.new()
@@ -44,22 +44,22 @@ func _process(delta: float) -> void:
 	var dateDisplay = get_node("/root/Game/Control/Top display/ColorRect/Label")
 	dateDisplay.text = getFullYear()
 	
-func _on_timer_timeout():
-	#leap years
-	if getMonth() == "February":
-		if year % 4 == 0 and day == 28:
-			day = 29
-		else:
-			if day < daysInMonths[month]:
-				day += 1
-			else:
-				month += 1
-				day = 1
-	elif day < daysInMonths[month]:
+func dateChangeThing():
+	if day < daysInMonths[month]:
 		day += 1
 	else:
 		month += 1
-		day = 1
+		day = 1	
+
+func _on_timer_timeout():
+	#leap years
+	if getMonth() == "February":
+		if (year % 4 == 0 and day == 28) and (not year % 100 == 0 or year % 400 == 0):
+			day = 29
+		else:
+			dateChangeThing()
+	else:
+		dateChangeThing()
 	
 class Nation:
 	var provinces

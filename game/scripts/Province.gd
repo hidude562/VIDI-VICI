@@ -5,8 +5,11 @@ extends MeshInstance3D
 @onready var game = get_node("/root/Europe map")
 
 var isBeingDisplayed = false;
+var neighbors = []
 
-
+func addNeighbor(neighbor: Node):
+	print("Neighbor ", str(neighbor.name))
+	neighbors.append(neighbor)
 
 func getScience():
 	return population / 10.0
@@ -62,13 +65,11 @@ func setNation(_nation: Globals.Nation):
 	get_mesh().surface_set_material(0, material)
 
 func getNation():
-	print(nation)
 	return nation
 
 func showInformation():
 	isBeingDisplayed = true
 	updateProvinceDisplay()
-	print(population)
 
 func hideInformation():
 	isBeingDisplayed = false

@@ -4,7 +4,6 @@ var nations = []
 
 func _ready():
 	for i in range(130):
-		print(i)
 		var newNation = Globals.Nation.new()
 		newNation.claimProvince(getRandomUnclaimedProvince())
 		nations.append(newNation)
@@ -22,7 +21,5 @@ func getRandomLandProvince():
 func getRandomUnclaimedProvince():
 	var randomProvince = getRandomLandProvince()
 	while randomProvince.getNation() != null:
-		print(randomProvince.getNation())
-		print("Infinite?")
 		randomProvince = getRandomLandProvince()
 	return randomProvince

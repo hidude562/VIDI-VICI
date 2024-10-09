@@ -9,4 +9,4 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var dateDisplay = get_node("/root/Game/Control/Top display/ColorRect/Label")
-	dateDisplay.text = TimeManager.getFullYear()
+	dateDisplay.text = TimeManager.getDayOfWeek() + " " + TimeManager.getFullYear()

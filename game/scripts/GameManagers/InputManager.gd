@@ -1,15 +1,15 @@
 extends Node
 
 func _input(event: InputEvent) -> void:
+	#pause/unpause the game
 	if Input.is_action_just_pressed("time"):
 		if TimeManager.paused:
 			TimeManager.paused = false
 			TimeManager.timer.start(0)
-			print("Unpaused")
 		else:
 			TimeManager.paused = true
 			TimeManager.timer.stop()
-			print("Paused")
+	#manage the speed of the game's time counting
 	if Input.is_action_just_pressed("speedControl1"):
 		TimeManager.timer.wait_time = 1
 	if Input.is_action_just_pressed("speedControl2"):
@@ -21,4 +21,4 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("speedControl5"):
 		TimeManager.timer.wait_time = 0.2
 	if Input.is_action_just_pressed("debugSuperSpeed"):
-		TimeManager.timer.wait_time = 0.000001
+		TimeManager.timer.wait_time = 0.0000000000000001

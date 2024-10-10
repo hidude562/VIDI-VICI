@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://7e4htcuu3j1e"]
+
+[ext_resource type="Script" path="res://scripts/Menus/start.gd" id="1_l5538"]
+
+[node name="titlescreen" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1162.0
+offset_bottom = 743.0
+color = Color(0.116127, 0.116127, 0.116127, 1)
+
+[node name="STart" type="Button" parent="Control/ColorRect"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Start"
+script = ExtResource("1_l5538")
+
+[connection signal="button_down" from="Control/ColorRect/STart" to="Control/ColorRect/STart" method="_on_button_down"]

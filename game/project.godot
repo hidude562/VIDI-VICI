@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Prosperity"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/titlescreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+Globals="*res://scripts/globals.gd"
 InputManager="*res://scripts/GameManagers/InputManager.gd"
 TimeManager="*res://scripts/GameManagers/TimeManager.gd"
 UiManager="*res://scripts/GameManagers/UIManager.gd"
-Globals="*res://scripts/globals.gd"
 
 [input]
 

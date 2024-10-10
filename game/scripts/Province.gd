@@ -68,11 +68,20 @@ func isWater():
 		return true
 	return false
 
-func setNation(_nation: Nation):
+func setNation(_nation: Globals.Nation):
 	nation = _nation
 	var material := get_mesh().surface_get_material(0).duplicate()
 	material.albedo_color = _nation.color
 	get_mesh().surface_set_material(0, material)
+
+func getCenter():
+	var faces = get_mesh().get_faces()
+	var avgPosition = Vector3()
+	for face in faces:
+		avgPosition += face
+	avgPosition /= len(faces)
+	avgPosition *= scale
+	return avgPosition
 
 func isClaimed():
 	return nation != null

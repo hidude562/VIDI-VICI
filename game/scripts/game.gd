@@ -18,8 +18,9 @@ func claimNeighbors(nation, provinces, num: int):
 	return claimed
 
 func _ready():
-	for i in range(50):
-		var newNation = Nation.new()
+	for i in range(15):
+		var newNation = Globals.Nation.new(i==0)
+		add_child(newNation)
 		var centerProvince = getRandomUnclaimedProvince()
 		newNation.claimProvince(centerProvince)
 		nations.append(newNation)
@@ -27,7 +28,7 @@ func _ready():
 var frame = 0
 
 func _process(delta: float) -> void:
-	if frame % 100 == 0:
+	if frame % 10 == 0:
 		for nation in nations:
 			claimNeighbors(nation, nation.getProvinces(), 1)
 			nation.putLabel()

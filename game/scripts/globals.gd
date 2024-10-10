@@ -7,15 +7,15 @@ class Nation extends Node:
 	var isPlayerNation
 	
 	var potentialNations = ["Denmark", "Great Britain", "Ireland", "France", "Prussia", "Netherlands", "Sweden", "Egypt", "Two Sicilies", "Austria", "Hungary", "Romania", "Greece", "Austria", "Switzerland", "Belgium", "Luxembourg", "Poland", "Russia", "Turkey", "Spain", "Portugal"]
-	var nationID
 	var nationName
 
 	func _init(isPlayerNation: bool):
 		self.isPlayerNation = isPlayerNation
 		self.provinces = []
-		self.nationID = RandomNumberGenerator.new().randi_range(0, len(potentialNations) - 1)
-		self.nationName = potentialNations[nationID]
-		potentialNations.remove_at(nationID)
+		
+		var temp = RandomNumberGenerator.new().randi_range(0, len(potentialNations) - 1)
+		self.nationName = potentialNations[temp]
+		potentialNations.remove_at(temp)
 		if(self.isPlayerNation):
 			self.nationName += " (You)"
 		self.color = Color.from_hsv(randf_range(0,3.14), randf_range(1,3.14), randf_range(1,3.14))

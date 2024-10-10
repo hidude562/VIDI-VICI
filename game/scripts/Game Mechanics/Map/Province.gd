@@ -17,7 +17,7 @@ func getScience():
 	return population / 10.0
 
 func getGDP():
-	return population * 1000
+	return population * 10
 
 func nextDay():
 	population = round(population * 1.001)

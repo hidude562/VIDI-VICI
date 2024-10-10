@@ -1,8 +1,8 @@
 extends Node
 
-const provinceScript = preload("res://scripts/Province.gd")
-const provinceCollisionScript = preload("res://scripts/ProvinceCollision.gd")
-const provinceAreaScript = preload("res://scripts/provinceNeighborsInitializer.gd")
+const provinceScript = preload("res://scripts/Game Mechanics/Map/Province.gd")
+const provinceCollisionScript = preload("res://scripts/Game Mechanics/Map/ProvinceCollision.gd")
+const provinceAreaScript = preload("res://scripts/Game Mechanics/Map/provinceNeighborsInitializer.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

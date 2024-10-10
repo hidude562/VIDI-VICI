@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://3y2e77yuc45h"]
 
 [ext_resource type="PackedScene" uid="uid://dw2cwqb50sr7n" path="res://scenes/Europe map.blend" id="1_7ddp7"]
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_5621r"]
-[ext_resource type="Script" path="res://scenes/camera_3d.gd" id="1_y4luw"]
-[ext_resource type="Script" path="res://scripts/ProvincesManager.gd" id="2_yt8sp"]
+[ext_resource type="Script" path="res://scripts/Game Mechanics/game.gd" id="1_5621r"]
+[ext_resource type="Script" path="res://scripts/Game Mechanics/camera_3d.gd" id="1_y4luw"]
+[ext_resource type="Script" path="res://scripts/Game Mechanics/Map/ProvincesManager.gd" id="2_yt8sp"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_5621r")

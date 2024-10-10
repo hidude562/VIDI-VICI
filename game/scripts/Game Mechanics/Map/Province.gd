@@ -19,6 +19,9 @@ func getScience():
 func getGDP():
 	return population * 10
 
+func getControl():
+	return 50
+
 func nextDay():
 	population = round(population * 1.001)
 	for neighbor in neighbors:
@@ -30,37 +33,10 @@ func nextDay():
 	if isBeingDisplayed:
 		updateProvinceDisplay()
 
-func number_format(value: float) -> String:
-	var abs_value = abs(value)
-	var suffix = ""
-	var formatted_value = value
-	if abs_value >= 1_000_000_000_000:
-		formatted_value = value / 1_000_000_000_000
-		suffix = "T"
-	elif abs_value >= 1_000_000_000:
-		formatted_value = value / 1_000_000_000
-		suffix = "B"
-	elif abs_value >= 1_000_000:
-		formatted_value = value / 1_000_000
-		suffix = "M"
-	elif abs_value >= 1_000:
-		formatted_value = value / 1_000
-		suffix = "K"
-	
-	return str(round(formatted_value * 100) / 100) + suffix
-
-
 func updateProvinceDisplay():
-	var provinceDisplay = get_node("/root/Game/" + "/Control/Province display")
-	var labelName = provinceDisplay.get_node("./Main/VBoxContainer/Name/Name")
-	var labelPopulation = provinceDisplay.get_node("./Main/VBoxContainer/Population/Name")
-	var labelGdp = provinceDisplay.get_node("./Main/VBoxContainer/MoreInfo/GDP/Name")
-	var labelScience = provinceDisplay.get_node("./Main/VBoxContainer/MoreInfo/Science/Name")
-	
-	labelName.text = get_name()
-	labelPopulation.text = "Population: " + str(number_format(population))
-	labelGdp.text = "GDP: $" + str(number_format(getGDP()))
-	labelScience = "Science: " + str(number_format(getScience()))
+	if(nation != null):
+		var provinceDisplay = get_node("/root/Game/Control/Provinces Display")
+		provinceDisplay.display(self)
 
 func isWater():
 	# If the color is blue, assume it is the water
@@ -87,7 +63,7 @@ func isClaimed():
 	return nation != null
 
 func isClaimable():
-	return not isClaimed() && not isWater();
+	return (not isClaimed()) && (not isWater());
 
 func getNation():
 	return nation
